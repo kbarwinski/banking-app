@@ -1,0 +1,21 @@
+<div class="form-container">
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" placeholder="Name">
+
+        <label for="description">Description</label>
+        <input id="description" formControlName="description" type="text" placeholder="Description">
+
+        <label for="amount">Amount</label>
+        <input id="amount" formControlName="amount" type="number" placeholder="Amount">
+
+        <label for="category">Category</label>
+        <app-category-dropdown id="category" class="app-category-dropdown"
+            [category]="this.transactionForm.controls.category" [multipleSelection]="false" placeholder="Category" />
+
+        <label for="occuredAt">Date</label>
+        <input id="occuredAt" formControlName="occuredAt" type="date">
+
+        <button type="submit">Create Transaction</button>
+    </form>
+</div>

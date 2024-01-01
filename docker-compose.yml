@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./BankingFrontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+      
+  backend:
+    build:
+      context: ./BankingBackend
+      dockerfile: Dockerfile
+    ports:
+      - "5245:80"
+    depends_on:
+      db:
+        condition: service_healthy
+      
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: banking
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5      
+
+volumes:
+  postgres_data:

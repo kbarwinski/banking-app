@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\BankingBackend.Application\BankingBackend.Application.csproj" />
+		<ProjectReference Include="..\BankingBackend.Domain\BankingBackend.Domain.csproj" />
+		<ProjectReference Include="..\BankingBackend.Persistence\BankingBackend.Persistence.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+<div class="landing-container">
+    <div class="actions-container">
+        <div class="list-container">
+            <app-transaction-item (transactionDeleted)="deleteTransaction($event)"
+                *ngFor="let transaction of transactions" [transaction]="transaction">
+            </app-transaction-item>
+        </div>
+        <div class="paginate-container">
+            <div class="features-container">
+                <div class="to-left">
+                    <button class="add-button" mat-flat-button (click)="navigateToFormRoute()">Add</button>
+                </div>
+                <div class="to-right">
+                    <div class="filter-toggles">
+                        <div class="filter-toggle">
+                            <app-category-dropdown [multipleSelection]="true" [category]="this.pickedCategories" />
+                            <button class="filter-button" mat-flat-button (click)="fetchTransactions()">Filter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-paginator #paginator (page)="handlePageEvent($event)" [length]="paginationArgs.totalCount"
+                [pageSize]="paginationArgs.pageSize" [showFirstLastButtons]="true"
+                [pageSizeOptions]="[3, 5, 10, 25, 100]" [pageIndex]="paginationArgs.page" aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

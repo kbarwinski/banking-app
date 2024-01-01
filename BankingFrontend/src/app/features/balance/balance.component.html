@@ -1,0 +1,11 @@
+<div class="balance-page-container">
+    <div *ngIf="!this.isLoading" class="balance-container">
+        <app-line-chart class="chart" [shownData]="balanceHistory"></app-line-chart>
+        <div class="totals-container">
+            <h1>Totals</h1>
+            <h2>
+                {{balanceHistory.datasets[0].data[balanceHistory.datasets[0].data.length - 1]}}$
+            </h2>
+        </div>
+    </div>
+</div>

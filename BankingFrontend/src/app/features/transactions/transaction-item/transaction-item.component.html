@@ -1,0 +1,17 @@
+<mat-card class="transaction-card">
+    <mat-card-header class="transaction-header">
+        <mat-card-title>{{ transaction.name }}</mat-card-title>
+        <p>{{ transaction.description }}</p>
+        <mat-chip *ngIf="transaction.amount > 0" class="income-category">{{ transaction.category.name }}</mat-chip>
+        <mat-chip *ngIf="transaction.amount < 0" class="expense-category">{{ transaction.category.name }}</mat-chip>
+    </mat-card-header>
+    <mat-card-content class="transaction-content">
+        <p *ngIf="transaction.amount > 0" class="income-amount">{{ transaction.amount | currency}}</p>
+        <p *ngIf="transaction.amount < 0" class="expense-amount">{{ transaction.amount | currency}}</p>
+        <p>{{ transaction.occuredAt | date:'mediumDate' }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="accent" (click)="markForDeletion(transaction.id)">Usuń
+            <mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+</mat-card>
